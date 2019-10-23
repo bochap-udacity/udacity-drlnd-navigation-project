@@ -1,6 +1,50 @@
 # Udacity Deep Reinforcement Learning Nanodegree Navigation Project
 This repository contains the code that is submitted as project 1 (p1 - Navigation) of Udacity's Deep Reinforcement Learning Nanodegree
 
+## Project Overview
+For this project, you will train an agent to navigate (and collect bananas!) in a large, square world.
+
+A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.
+
+The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around the agent's forward direction. Given this information, the agent has to learn how to best select actions. Four discrete actions are available, corresponding to:
+
+- 0 - move forward.
+- 1 - move backward.
+- 2 - turn left.
+- 3 - turn right.
+
+The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
+
+### Folder Structure
+
+```
+├── LICENSE
+├── README.md
+├── Report.ipynb ' Executable notebook 
+├── Report.pdf   ' Exported report
+├── checkpoint-100000.pth
+├── checkpoint-100000x32.pth
+├── checkpoint-200000.pth
+├── checkpoint-200000x32.pth
+├── checkpoint-250000.pth
+├── checkpoint-250000x32.pth
+├── checkpoint-fastest-reward.pth ' Persisted state of fastest reward
+├── documentation
+│   └── images
+├── envs
+│   ├── Banana.app ' MacOS Environment
+│   ├── VisualBanana_Linux ' Linux Environment
+│   ├── VisualBanana_Windows_x86    ' Windows 32 bit Environment
+│   └── VisualBanana_Windows_x86_64 ' Windows 64 bit Environment
+│   
+└── qnetwork
+    ├── __init__.py
+    ├── __pycache__
+    ├── agent.py ' Implementation of Q Network agent
+    └── model.py ' Model of Q Network
+
+```
+
 ## Introduction
 
 This project looks into using Deep Reinforcement Learning to train an agent to solve a banana collecting task in an Unity Enviroment.
@@ -57,22 +101,13 @@ Run `conda activate --name drlnd-p1` (This is ran everytime before activating th
 4. Activate the command palette using `cmd / ctrl + shift + p` and Find and execute `run all cells`
    ![alt text](documentation/images/command_palette_run_all_cells.png "Command Palette run all cells")
 
-## Optimal Implementation
-The optimal implentation tested for the selected QNetwork agent uses the following parameters:
+## Fastest Reward Reached Implementation
+The Fastest Reward Reached tested for the selected QNetwork agent uses the following parameters:
 
-Fastest Reward Reached: 491, Best Average Score: 16.60
+Fastest Reward Reached: 520, Best Average Score: 16.51
    1. Seed = 0
    2. Buffer Size = 100,000
    3. Batch Size = 32
-   4. Gamma = 0.99
-   5. tau = 0.001
-   6. lr = 0.0005
-   7. Network update frequency = 4
-
-Maximum reward of 2,000 Episodes, Best Average Score: 17.19, Initial Episode Reached Target Reward: 595
-   1. Seed = 0
-   2. Buffer Size = 200,000
-   3. Batch Size = 64
    4. Gamma = 0.99
    5. tau = 0.001
    6. lr = 0.0005

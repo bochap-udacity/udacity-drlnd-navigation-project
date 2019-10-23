@@ -11,7 +11,7 @@ class Agent():
     '''Interacts with and learns from the environment'''
     
     def __init__(
-        self, device, memory, action_size, state_size, seed, 
+        self, device, memory, action_size, state_size, 
         batch_size,  gamma,  
         lr, update_every, tau, hidden_layer_lengths
     ):
@@ -22,7 +22,6 @@ class Agent():
             device (object): inidicates the device (GPU, CPU) to run the model on
             state_size (int): dimension of each state
             action_size (int): dimension of each action
-            seed (int): random seed
             batch_size (int): minibatch size
             gamma (float): discount factor
             ir (float): learning rate 
@@ -32,7 +31,6 @@ class Agent():
         self.device = device
         self.action_size = action_size
         self.state_size = state_size
-        self.seed = random.seed(seed)
         self.batch_size = batch_size
         self.gamma = gamma
         self.update_every = update_every
@@ -40,11 +38,9 @@ class Agent():
         
         
         # Q-Network
-        self.qnetwork_local = Network(state_size, action_size, seed, hidden_layer_lengths).to(device)
-        self.qnetwork_target = Network(state_size, action_size, seed, hidden_layer_lengths).to(device)
+        self.qnetwork_local = Network(state_size, action_size, hidden_layer_lengths).to(device)
+        self.qnetwork_target = Network(state_size, action_size, hidden_layer_lengths).to(device)
         self.optimizer = optim.Adam(self.qnetwork_local.parameters(), lr=lr)
-        print(self.qnetwork_local)
-        print(self.qnetwork_target)
         
         # Replay memory
         self.memory = memory

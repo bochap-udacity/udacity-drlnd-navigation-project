@@ -5,19 +5,17 @@ import torch.nn.functional as F
 class Network(nn.Module):
     '''Action (Policy) Model.'''
     
-    def __init__(self, state_size, action_size, seed, hidden_layer_lengths):
+    def __init__(self, state_size, action_size, hidden_layer_lengths):
         '''Initialize parameters and build model.
         
         Params
         ======
             state_size (int): Dimension of each state
             action_size (int): Dimension of each action
-            seed (int): Random seed
             fc1_units (int): Number of nodes in first hidden layer
             fc2_units (int): Number of nodes in second hidden layer
         '''
         super(Network, self).__init__()
-        self.seed = torch.manual_seed(seed)
         self.fc1 = nn.Linear(state_size, hidden_layer_lengths['fc1'])
         self.fc2 = nn.Linear(hidden_layer_lengths['fc1'], hidden_layer_lengths['fc2'])
         self.fc3 = nn.Linear(hidden_layer_lengths['fc2'], action_size)
